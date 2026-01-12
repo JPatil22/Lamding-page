@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartClinic | The Unified Operating System for Modern Practices</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Animate.css for entrance animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                        dark: '#020617',
+                        slate: { 950: '#020617', 900: '#0f172a', 800: '#1e293b' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass { @apply bg-white/5 backdrop-blur-xl border border-white/10; }
+            .glass-dark { @apply bg-slate-950/50 backdrop-blur-2xl border border-white/5; }
+            .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400; }
+            .section-label { @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-8; }
+            .card-premium { @apply transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 border border-white/5 bg-slate-900/50 backdrop-blur-sm rounded-[2.5rem]; }
+            .btn-glow { @apply relative overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] active:scale-95; }
+        }
+        body { scroll-behavior: smooth; @apply bg-dark text-slate-100 antialiased; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(2,6,23,0) 70%);
+            z-index: -1;
+            filter: blur(60px);
+        }
+
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    </style>
+</head>
+
+<body>
+    <!-- Background Decor -->
+    <div class="blob top-[-100px] left-[-100px]"></div>
+    <div class="blob bottom-[10%] right-[-100px]"
+        style="background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, rgba(2,6,23,0) 70%);"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-primary to-blue-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/25">
+                    <i data-lucide="shield-plus"></i>
+                </div>
+                <span class="text-2xl font-black tracking-tight">SmartClinic<span class="text-primary">.</span></span>
+            </div>
+
+            <div class="hidden md:flex gap-10 text-sm font-bold tracking-wide">
+                <a href="#chaos" class="hover:text-primary transition-colors">The Problem</a>
+                <a href="#ecosystem" class="hover:text-primary transition-colors">Ecosystem</a>
+                <a href="#journey" class="hover:text-primary transition-colors">Patient Journey</a>
+                <a href="#revenue" class="hover:text-primary transition-colors">ROI</a>
+            </div>
+
+            <a href="#contact" class="bg-primary text-white px-6 py-3 rounded-xl font-bold text-sm btn-glow">Request
+                Private Demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="animate__animated animate__fadeInLeft">
+                <div class="section-label">Executive Pitch Edition 2026</div>
+                <h1 class="text-6xl lg:text-7xl font-black leading-[1.05] mb-8 tracking-tighter">
+                    Your Clinic. <br>Digitized. <br><span class="text-gradient">Fully Optimized.</span>
+                </h1>
+                <p class="text-xl text-slate-400 font-medium leading-relaxed mb-12 max-w-xl">
+                    The world's most frictionless clinic operating system. Manage your lobby, recovery, and revenue
+                    entirely through the power of automation and WhatsApp.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#contact"
+                        class="bg-white text-dark px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-200 transition-all flex items-center justify-center gap-3">
+                        Get Started <i data-lucide="arrow-right"></i>
+                    </a>
+                    <div class="flex items-center gap-4 px-4">
+                        <div class="flex -space-x-3">
+                            <img src="https://i.pravatar.cc/100?u=1"
+                                class="w-10 h-10 rounded-full border-2 border-dark" />
+                            <img src="https://i.pravatar.cc/100?u=2"
+                                class="w-10 h-10 rounded-full border-2 border-dark" />
+                            <img src="https://i.pravatar.cc/100?u=3"
+                                class="w-10 h-10 rounded-full border-2 border-dark" />
+                        </div>
+                        <p class="text-sm font-bold text-slate-500">Join our <span class="text-white">Elite Early
+                                Adopters</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative animate__animated animate__fadeInRight">
+                <!-- Premium Abstract Mockup Container -->
+                <div
+                    class="relative z-10 p-2 bg-slate-800/50 rounded-[3rem] border border-white/10 shadow-2xl overflow-hidden group">
+                    <div class="rounded-[2.5rem] overflow-hidden bg-slate-950 aspect-[4/3] relative p-8">
+                        <!-- Abstract UI: Dashboard -->
+                        <div class="flex items-center justify-between mb-8 opacity-50">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-accent"></div>
+                                <div class="w-3 h-3 rounded-full bg-secondary"></div>
+                            </div>
+                            <div class="w-32 h-4 bg-white/5 rounded-full"></div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-8">
+                            <div class="h-24 glass rounded-2xl p-4 flex flex-col justify-between">
+                                <div class="w-1/2 h-2 bg-primary/20 rounded-full"></div>
+                                <div class="w-full h-4 bg-primary/40 rounded-full"></div>
+                            </div>
+                            <div class="h-24 glass rounded-2xl p-4 flex flex-col justify-between border-secondary/20">
+                                <div class="w-1/2 h-2 bg-secondary/20 rounded-full"></div>
+                                <div class="w-full h-4 bg-secondary/40 rounded-full"></div>
+                            </div>
+                            <div class="h-24 glass rounded-2xl p-4 flex flex-col justify-between">
+                                <div class="w-1/2 h-2 bg-white/10 rounded-full"></div>
+                                <div class="w-full h-4 bg-white/20 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="w-full h-32 glass rounded-3xl p-6 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent"></div>
+                                <div class="w-1/3 h-4 bg-white/10 rounded-full mb-4"></div>
+                                <div class="space-y-2">
+                                    <div class="w-full h-2 bg-white/5 rounded-full"></div>
+                                    <div class="w-5/6 h-2 bg-white/5 rounded-full"></div>
+                                    <div class="w-4/6 h-2 bg-white/5 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent">
+                        </div>
+                        <div class="absolute bottom-8 left-8 right-8 flex justify-between items-end">
+                            <div>
+                                <p class="text-[10px] font-black uppercase tracking-widest text-primary mb-2">Platform
+                                    Preview</p>
+                                <h3 class="text-2xl font-bold text-white">Secure Operating System</h3>
+                            </div>
+                            <div class="px-4 py-2 glass rounded-full text-xs font-bold flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> ENCRYPTED
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Floating Decorative Elements -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse">
+                </div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl animate-pulse">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Chaos (From Presentation) -->
+    <section id="chaos" class="py-32 px-6 bg-slate-950/40 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-20 animate__animated animate__fadeInUp">
+                <div class="section-label mx-auto">The Problem</div>
+                <h2 class="text-4xl lg:text-5xl font-black mb-6 italic text-white leading-tight">Clinic Management
+                    <br>is <span class="text-red-500">Broken.</span>
+                </h2>
+                <p class="text-slate-500 font-medium text-lg">Traditional hospitals lose thousands of hours and millions
+                    in revenue to manual inefficiencies.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="p-10 rounded-[2.5rem] glass-dark border-red-500/10 hover:border-red-500/30 transition-all group">
+                    <div
+                        class="w-14 h-14 bg-red-500/10 text-red-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="users-round" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">OPD Chaos</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Patients don't know their turn. Staff keeps
+                        calling names. Crowd in waiting room. No control.</p>
+                </div>
+                <div
+                    class="p-10 rounded-[2.5rem] glass-dark border-orange-500/10 hover:border-orange-500/30 transition-all group">
+                    <div
+                        class="w-14 h-14 bg-orange-500/10 text-orange-500 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="history" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">No History</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Doctors don't see previous visits or meds. Every
+                        consultation starts from absolute zero.</p>
+                </div>
+                <div
+                    class="p-10 rounded-[2.5rem] glass-dark border-primary/10 hover:border-primary/30 transition-all group">
+                    <div
+                        class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wallet-cards" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Payment Leakage</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Confusing Cash vs UPI tracking. Pending payments
+                        get lost. Daily revenue is a mystery.</p>
+                </div>
+                <div
+                    class="p-10 rounded-[2.5rem] glass-dark border-secondary/10 hover:border-secondary/30 transition-all group">
+                    <div
+                        class="w-14 h-14 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                        <i data-lucide="user-minus" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Lost Patients</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed">Patients visit once and never return. There is
+                        zero automated follow-up or re-engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Patient Journey (From India Page) -->
+    <section id="journey" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="relative order-2 lg:order-1">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 blur-3xl rounded-full">
+                    </div>
+                    <div class="relative glass bg-slate-900 shadow-2xl rounded-[3rem] p-12 space-y-12">
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-primary font-black shrink-0 border border-primary/20">
+                                1</div>
+                            <div>
+                                <h4 class="text-xl font-black mb-2 text-white">WhatsApp Booking</h4>
+                                <p class="text-slate-400 text-sm">Patient messages your number 24/7. No app download
+                                    needed.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-secondary font-black shrink-0 border border-secondary/20">
+                                2</div>
+                            <div>
+                                <h4 class="text-xl font-black mb-2 text-white">Instant Token</h4>
+                                <p class="text-slate-400 text-sm">System assigns a digital token with estimated wait
+                                    time instantly.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-accent font-black shrink-0 border border-accent/20">
+                                3</div>
+                            <div>
+                                <h4 class="text-xl font-black mb-2 text-white">"Arrive Now" Alert</h4>
+                                <p class="text-slate-400 text-sm">Automatic alert pinged to their phone when they are
+                                    next in line.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-6">
+                            <div
+                                class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white font-black shrink-0 border border-white/20">
+                                4</div>
+                            <div>
+                                <h4 class="text-xl font-black mb-2 text-white">Zero-Wait Consultation</h4>
+                                <p class="text-slate-400 text-sm">Patient walks in exactly when required. Happy patient,
+                                    empty lobby.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <div class="section-label">Patient Experience</div>
+                    <h2 class="text-5xl lg:text-6xl font-black mb-8 leading-tight text-white">The Modern <br><span
+                            class="italic text-primary text-gradient">Patient Journey.</span></h2>
+                    <p class="text-xl text-slate-400 leading-relaxed mb-10">
+                        Stop treating your patients like a queue. Treat them like a priority. SmartClinic removes the
+                        friction from registration to recovery.
+                    </p>
+                    <div class="p-8 glass rounded-[2rem] border-secondary/20 relative overflow-hidden group">
+                        <div
+                            class="absolute inset-0 bg-secondary/5 translate-x-full group-hover:translate-x-0 transition-transform duration-700">
+                        </div>
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div
+                                    class="w-10 h-10 bg-secondary/10 text-secondary rounded-full flex items-center justify-center">
+                                    <i data-lucide="check" class="w-6 h-6"></i>
+                                </div>
+                                <span class="font-bold text-lg text-white">Results: 24% Higher Retention</span>
+                            </div>
+                            <p class="text-slate-500 text-sm font-medium">Clinics using this flow report patients are
+                                24.8%
+                                more likely to return for follow-ups due to the ease of experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Ecosystem (Protected Abstract UI) -->
+    <section id="ecosystem" class="py-32 px-6 bg-slate-900/50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-24">
+                <div class="section-label mx-auto">The Ecosystem</div>
+                <h2 class="text-5xl font-black mb-6 italic text-white uppercase tracking-tighter">Protected Precision.
+                </h2>
+                <p class="text-slate-400 text-lg">Every module is designed to give you back 2 hours of your day, without
+                    compromising your clinic's data security.</p>
+            </div>
+
+            <div class="space-y-40">
+                <!-- Module 1: Abstract Doctor Console -->
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div class="animate__animated animate__fadeInLeft">
+                        <div
+                            class="w-12 h-12 bg-primary/20 text-primary rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="layout" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-4xl font-black mb-6 text-white">Smart Doctor Console</h3>
+                        <p class="text-slate-400 text-lg mb-8 italic">"Stop clicking, start healing."</p>
+                        <p class="text-slate-500 mb-8 leading-relaxed">Our proprietary console layout provides
+                            mission-critical data at a glance. We shield the exact workflow to maintain your competitive
+                            edge, but the results are immediate.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-primary"></i> Encrypted Patient EMR Flow</li>
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-primary"></i> One-Tap Diagnosis Entry</li>
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-primary"></i> Legacy Record Migration</li>
+                        </ul>
+                    </div>
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-2xl"></div>
+                        <div
+                            class="relative h-[400px] glass rounded-[2.5rem] p-10 flex flex-col justify-center gap-6 border-white/5 overflow-hidden">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-16 h-16 rounded-2xl bg-primary/20 animate-pulse"></div>
+                                <div class="space-y-2 flex-1">
+                                    <div class="w-1/3 h-4 bg-white/10 rounded-full"></div>
+                                    <div class="w-1/4 h-2 bg-white/5 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="w-full h-8 glass rounded-xl border-white/10 px-4 flex items-center">
+                                    <div class="w-full h-2 bg-white/5 rounded-full"></div>
+                                </div>
+                                <div class="w-full h-8 glass rounded-xl border-white/10 px-4 flex items-center">
+                                    <div class="w-full h-2 bg-white/5 rounded-full"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div
+                                        class="h-32 glass rounded-2xl border-primary/20 p-4 flex flex-col justify-center items-center gap-2">
+                                        <div class="w-8 h-8 rounded-lg bg-primary/20"></div>
+                                        <div class="w-1/2 h-2 bg-white/10 rounded-full"></div>
+                                    </div>
+                                    <div
+                                        class="h-32 glass rounded-2xl border-white/5 p-4 flex flex-col justify-center items-center gap-2">
+                                        <div class="w-8 h-8 rounded-lg bg-white/5"></div>
+                                        <div class="w-1/2 h-2 bg-white/10 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Blurred Overlay for Security Impression -->
+                            <div
+                                class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 to-transparent">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Module 2: Abstract Revenue -->
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div class="order-2 lg:order-1 relative group">
+                        <div class="absolute -inset-4 bg-secondary/10 rounded-[3rem] blur-2xl"></div>
+                        <div
+                            class="relative h-[400px] glass rounded-[2.5rem] p-10 overflow-hidden flex flex-col justify-center border-white/5">
+                            <div class="flex items-end gap-3 h-40 mb-8 border-b border-white/5 pb-4">
+                                <div class="flex-1 bg-secondary/10 rounded-t-lg h-[40%] animate-pulse"></div>
+                                <div class="flex-1 bg-secondary/20 rounded-t-lg h-[70%] animate-pulse"
+                                    style="animation-delay: 0.2s"></div>
+                                <div class="flex-1 bg-secondary/40 rounded-t-lg h-[90%] animate-pulse"
+                                    style="animation-delay: 0.4s"></div>
+                                <div class="flex-1 bg-secondary/20 rounded-t-lg h-[60%] animate-pulse"
+                                    style="animation-delay: 0.6s"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="p-6 glass rounded-2xl border-secondary/20 text-white">
+                                    <div class="w-1/2 h-2 bg-white/10 rounded-full mb-4 text-white"></div>
+                                    <div class="w-full h-6 bg-secondary/20 rounded-lg text-white"></div>
+                                </div>
+                                <div class="p-6 glass rounded-2xl border-white/5">
+                                    <div class="w-1/2 h-2 bg-white/10 rounded-full mb-4"></div>
+                                    <div class="w-full h-6 bg-white/10 rounded-lg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2 animate__animated animate__fadeInRight">
+                        <div
+                            class="w-12 h-12 bg-secondary/20 text-secondary rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-4xl font-black mb-6 text-white uppercase tracking-tighter">Revenue Intelligence
+                        </h3>
+                        <p class="text-slate-400 text-lg mb-8 italic">"Know every rupee, instantly."</p>
+                        <p class="text-slate-500 mb-8 leading-relaxed">Our payment tracking logic is a trade secret that
+                            helps clinics identify leakage in real-time. We automate the reconciliation of Cash vs. UPI
+                            vs. Pending with 100% accuracy.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-secondary"></i> Encrypted Daily ROI Reports</li>
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-secondary"></i> Automated UPI Verification</li>
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-secondary"></i> Leakage Alert System</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Module 3: Abstract Patient Recovery -->
+                <div class="grid lg:grid-cols-2 gap-24 items-center">
+                    <div class="animate__animated animate__fadeInLeft">
+                        <div
+                            class="w-12 h-12 bg-accent/20 text-accent rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="refresh-ccw" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-4xl font-black mb-6 text-white uppercase tracking-tighter">Recovery Engine</h3>
+                        <p class="text-slate-400 text-lg mb-8 italic">"Reclaim what belongs to your practice."</p>
+                        <p class="text-slate-500 mb-8 leading-relaxed">Our proprietary "Retention Algorithm" identifies
+                            and re-engages patients who are due for follow-ups via WhatsApp. This is the ultimate tool
+                            to scale without spending on ads.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-accent"></i> Automated Re-engagement Bloack</li>
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-accent"></i> ROI Tracking: Reclaim ₹50k+ Monthly</li>
+                            <li class="flex items-center gap-3 text-slate-300 font-bold"><i data-lucide="shield-check"
+                                    class="text-accent"></i> Proprietary Follow-up Logic</li>
+                        </ul>
+                    </div>
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-accent/10 rounded-[3rem] blur-2xl"></div>
+                        <div
+                            class="relative h-[400px] glass rounded-[2.5rem] p-10 overflow-hidden flex flex-col justify-center items-center border-white/5">
+                            <div
+                                class="w-24 h-24 rounded-full border-4 border-dashed border-accent/30 animate-spin-slow flex items-center justify-center mb-8">
+                                <i data-lucide="zap" class="w-8 h-8 text-accent animate-pulse"></i>
+                            </div>
+                            <div class="space-y-3 w-full max-w-[200px]">
+                                <div class="h-2 w-full bg-accent/20 rounded-full animate-pulse text-white"></div>
+                                <div class="h-2 w-4/5 bg-accent/10 rounded-full animate-pulse text-white"
+                                    style="animation-delay: 0.2s"></div>
+                                <div class="h-2 w-3/4 bg-accent/5 rounded-full animate-pulse text-white"
+                                    style="animation-delay: 0.4s"></div>
+                            </div>
+                            <div
+                                class="mt-8 px-6 py-2 glass rounded-full border-accent/20 text-accent text-xs font-black uppercase tracking-widest text-white">
+                                AI Recovery Active
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Revenue / ROI Focus -->
+    <section id="revenue" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto glass rounded-[4rem] p-12 lg:p-24 text-center relative overflow-hidden group">
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] group-hover:bg-primary/40 transition-colors duration-1000">
+            </div>
+            <div class="relative z-10">
+                <div class="section-label mx-auto italic">ROI Potential</div>
+                <h2 class="text-5xl lg:text-7xl font-black mb-10 tracking-tighter uppercase text-white">Stop Leaving
+                    <br><span class="text-secondary text-gradient">Money on the Table.</span>
+                </h2>
+
+                <div class="grid md:grid-cols-3 gap-12 text-left mb-20 mt-16">
+                    <div
+                        class="p-10 border-l-4 border-secondary bg-white/5 rounded-r-[2.5rem] hover:bg-white/10 transition-all">
+                        <p class="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-4">Revenue
+                            Reclaimed</p>
+                        <div class="text-6xl font-black text-white mb-4">₹50k+</div>
+                        <p class="text-sm font-medium text-slate-400 italic leading-relaxed">Average monthly revenue
+                            reclaimed from lost patients using our proprietary logic.</p>
+                    </div>
+                    <div
+                        class="p-10 border-l-4 border-primary bg-white/5 rounded-r-[2.5rem] hover:bg-white/10 transition-all">
+                        <p class="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-4">Operations
+                            Optimized</p>
+                        <div class="text-6xl font-black text-white mb-4">2 Hours</div>
+                        <p class="text-sm font-medium text-slate-400 italic leading-relaxed">Saved per day for clinic
+                            staff by automating registration and reconciliation.</p>
+                    </div>
+                    <div
+                        class="p-10 border-l-4 border-accent bg-white/5 rounded-r-[2.5rem] hover:bg-white/10 transition-all">
+                        <p class="text-[10px] font-black uppercase text-slate-500 tracking-widest mb-4">Patient
+                            Satisfaction</p>
+                        <div class="text-6xl font-black text-white mb-4">98%</div>
+                        <p class="text-sm font-medium text-slate-400 italic leading-relaxed">Positive feedback on
+                            wait-time transparency and WhatsApp ease-of-use.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-col items-center gap-8 glass p-10 rounded-[2.5rem] border-white/5 max-w-3xl mx-auto">
+                    <div class="flex gap-1 text-accent">
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                        <i data-lucide="star" class="fill-current w-4 h-4"></i>
+                    </div>
+                    <p class="text-2xl font-black text-slate-200 leading-relaxed italic">"The smartest investment I've
+                        made for my practice in 10 years. It paid for itself in the first 2 weeks."</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://i.pravatar.cc/100?u=doc"
+                            class="w-12 h-12 rounded-full border-2 border-primary" />
+                        <div class="text-left">
+                            <p class="text-white font-black text-lg">— Dr. Rajesh Sharma</p>
+                            <p class="text-slate-500 text-xs font-bold uppercase tracking-widest">MD, City
+                                Multispeciality</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="contact" class="py-32 px-6 relative">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center text-white">
+            <div>
+                <h2 class="text-5xl lg:text-7xl font-black mb-8 leading-tight text-white uppercase tracking-tighter">
+                    Scale Your <br><span class="text-primary italic text-gradient">Clinic ROI.</span></h2>
+                <p class="text-xl text-slate-400 mb-12 font-medium">Join the first wave of practitioners who have
+                    reclaimed their
+                    clinic's peace. See SmartClinic live in action.</p>
+
+                <div class="space-y-6">
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary font-black">
+                            <i data-lucide="check-circle-2"></i>
+                        </div>
+                        <span class="text-lg font-bold">Ready to use in 24 hours</span>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary font-black">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <span class="text-lg font-bold">On-site Staff Training Included</span>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div
+                            class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary font-black">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <span class="text-lg font-bold">No High Upfront Cost</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-[3rem] blur opacity-25">
+                </div>
+                <div class="relative glass bg-slate-900/80 p-12 rounded-[3rem] shadow-2xl">
+                    <form action="#" method="POST" class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-500">Full
+                                Name</label>
+                            <input type="text" placeholder="Dr. Rahul Varma"
+                                class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary transition-all font-bold"
+                                required />
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-[10px] font-black uppercase tracking-widest text-slate-500">Clinic
+                                    Name</label>
+                                <input type="text" placeholder="City Medical"
+                                    class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary transition-all font-bold"
+                                    required />
+                            </div>
+                            <div class="space-y-2">
+                                <label
+                                    class="text-[10px] font-black uppercase tracking-widest text-slate-500">Phone</label>
+                                <input type="tel" placeholder="+91..."
+                                    class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary transition-all font-bold"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label
+                                class="text-[10px] font-black uppercase tracking-widest text-slate-500">Specialty</label>
+                            <select
+                                class="w-full bg-dark border border-white/10 p-5 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary transition-all font-bold appearance-none text-white">
+                                <option>General Physician</option>
+                                <option>Pediatrician</option>
+                                <option>Orthopedic</option>
+                                <option>Gastroenterologist</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-6 rounded-2xl font-black text-xl btn-glow shadow-xl shadow-primary/20 transition-all hover:-translate-y-1">
+                            Book Free 15-Min Demo
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 text-center text-slate-500">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="font-bold mb-4">SmartClinic Labs © 2026. Built for India's Elite Practices.</p>
+            <div class="flex justify-center gap-6 text-xs uppercase tracking-widest font-black">
+                <a href="#" class="hover:text-primary transition-colors">Privacy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms</a>
+                <a href="#" class="hover:text-primary transition-colors">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
